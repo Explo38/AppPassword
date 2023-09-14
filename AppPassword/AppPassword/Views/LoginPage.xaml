@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="AppPassword.Views.LoginPage"
+             xmlns:vm="clr-namespace:AppPassword.ViewModels"
+             xmlns:magic="clr-namespace:MagicGradients;assembly=MagicGradients">
+
+
+
+<ContentPage.BindingContext>
+        <vm:LoginViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+            <Style TargetType="Entry">
+                <Setter Property="WidthRequest" Value="200"/>
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="Margin" Value="0,10"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource Accent}"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="CornerRadius" Value="20"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Fond d'écran avec image -->
+        <Image Source="font_login_fluid.png" Aspect="AspectFill" Grid.RowSpan="2"/>
+
+        <!-- Effet néon simulé -->
+        <BoxView BackgroundColor="#6A00F4" Opacity="0.5" CornerRadius="32" Margin="48,280,48,75" Grid.RowSpan="2"/>
+
+        <!-- Logo de l'app above the Frame -->
+        <Image Source="logo_securipass.png" WidthRequest="200" HeightRequest="200" HorizontalOptions="Center" Grid.Row="0" />
+
+        <!-- Conteneur principal -->
+        <Frame Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center" 
+       CornerRadius="30" 
+       BackgroundColor="White" 
+       HasShadow="True" 
+       WidthRequest="250" HeightRequest="340">
+
+            <StackLayout>
+                <!-- Logo de l'app à l'intérieur du Frame -->
+                <Image Source="utilisateur.png" WidthRequest="100" HeightRequest="100" HorizontalOptions="Center" />
+
+                <!-- Utilisation d'un Frame pour le CornerRadius autour de l'Entry -->
+                <Entry WidthRequest="200" x:Name="TB_User" Text="{Binding User, Mode=TwoWay}" Placeholder="Username"/>
+                <Entry WidthRequest="200" x:Name="TB_Password" Text="{Binding Password, Mode=TwoWay}" IsPassword="True" Placeholder="Password"/>
+
+                <Button Command="{Binding LoginCommand}" Text="Login" Margin="0,20,0,0"/>
+                <Label x:Name="TB_Erreur" Text="{Binding Erreur, Mode=TwoWay}" TextColor="Red" HorizontalOptions="Center"/>
+            </StackLayout>
+        </Frame>
+    </Grid>
+    
+</ContentPage>
+
+
