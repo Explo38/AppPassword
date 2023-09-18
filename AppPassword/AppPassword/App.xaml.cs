@@ -13,7 +13,7 @@ namespace AppPassword
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
+            //DependencyService.Register<MockContactStore>();
             MainPage = new AppShell();
         }
 
