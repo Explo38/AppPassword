@@ -10,25 +10,23 @@ using Xamarin.Forms;
 using AppPassword.Views;
 using AppPassword.Services;
 using AppPassword.Models;
-
-
-
+using Contact = AppPassword.Models.Contact;
 
 namespace AppPassword.ViewModels
 {
     public class HomePageViewModel : BaseViewModel
     {
         public ICommand AddCommand { get; private set; }
-        public ObservableCollection<AppPassword.Models.Contact> Contacts { get; set; }
+        public ObservableCollection<Contact> Contacts { get; set; }
         // Ensure that this field is also internal to match the accessibility level of Contact_DAO
-        internal Contact_DAO _ContactDAO;
+        private Contact_DAO _ContactDAO;
 
         public HomePageViewModel()
         {
             AddCommand = new Command(ExecuteAddCommand);
             _ContactDAO = new Contact_DAO();
             var credentials = _ContactDAO.GetAllContact();
-            Contacts = new ObservableCollection<AppPassword.Models.Contact>();
+            Contacts = new ObservableCollection<Contact>();
             foreach (var credential in credentials)
             {
                 Contacts.Add(credential);

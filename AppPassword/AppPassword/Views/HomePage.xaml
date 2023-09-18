@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:AppPassword.ViewModels"
+             xmlns:viewModel="clr-namespace:AppPassword.ViewModels"
+             xmlns:model="clr-namespace:AppPassword.Models"
              x:Class="AppPassword.Views.HomePage">
 
 
 
-   <!--<ContentPage.BindingContext>
-        <vm:HomeViewModel/>
-    </ContentPage.BindingContext>--> 
-
+    <ContentPage.BindingContext>
+        <viewModel:HomePageViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Resources>
         <!-- Vos ressources ici -->
     </ContentPage.Resources>
@@ -22,12 +22,12 @@
 
         <!-- Fond d'écran avec image -->
         <Image Source="font_login_fluid.png" Aspect="AspectFill" Grid.RowSpan="2"/>
-
         <!-- Liste des applications/sites -->
-        <ListView x:Name="AppsList" Grid.Row="1" Margin="20,10,20,10">
-            <ListView.ItemTemplate>
+        <CollectionView x:Name="AppsList" Grid.Row="1" Margin="20,10,20,10"
+                        ItemsSource="{Binding Contacts}"
+                        SelectionMode="None">
+            <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
                         <Frame CornerRadius="20" Padding="10" Margin="5" BackgroundColor="White">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -35,18 +35,17 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <!-- Logo du site -->
-                                <Image Source="{Binding Logo}" WidthRequest="50" HeightRequest="50" Aspect="AspectFit" Grid.Column="0"/>
+                                <!--<Image Source="{Binding Logo}" WidthRequest="50" HeightRequest="50" Aspect="AspectFit" Grid.Column="0"/> -->
                                 <!-- Nom du site et e-mail de l'utilisateur -->
                                 <StackLayout Grid.Column="1" VerticalOptions="Center" Spacing="0">
-                                    <Label Text="{Binding SiteName}" FontAttributes="Bold"/>
-                                    <Label Text="{Binding UserEmail}" FontSize="Small" TextColor="Gray"/>
+                                    <Label Text="{Binding User}" FontAttributes="Bold" TextColor="White"/>
+                                    <Label Text="{Binding Password}" FontSize="Small" TextColor="Gray"/>
                                 </StackLayout>
                             </Grid>
                         </Frame>
-                    </ViewCell>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </Grid>
 
 </ContentPage>

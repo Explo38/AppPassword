@@ -12,8 +12,6 @@ using Rg.Plugins.Popup.Services;
 using Rg.Plugins.Popup.Pages;
 
 
-
-
 namespace AppPassword.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -22,9 +20,6 @@ namespace AppPassword.Views
         public HomePage()
         {
             InitializeComponent();
-           
         }
-
-   
     }
 }
