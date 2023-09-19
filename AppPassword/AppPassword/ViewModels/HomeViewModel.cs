@@ -10,48 +10,33 @@ using Xamarin.Forms;
 using AppPassword.Views;
 using AppPassword.Services;
 using AppPassword.Models;
-
-
-
+using Contact = AppPassword.Models.Contact;
 
 namespace AppPassword.ViewModels
 {
-    public class HomePageViewModel/* : INotifyPropertyChanged*/
+    public class HomePageViewModel : BaseViewModel
     {
-        //public event PropertyChangedEventHandler PropertyChanged;
+        public ICommand AddCommand { get; private set; }
+        public ObservableCollection<Contact> Contacts { get; set; }
+        // Ensure that this field is also internal to match the accessibility level of Contact_DAO
+        private Contact_DAO _ContactDAO;
 
-        //protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        //{
-        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        //}
+        public HomePageViewModel()
+        {
+            AddCommand = new Command(ExecuteAddCommand);
+            _ContactDAO = new Contact_DAO();
+            var credentials = _ContactDAO.GetAllContact();
+            Contacts = new ObservableCollection<Contact>();
+            foreach (var credential in credentials)
+            {
+                Contacts.Add(credential);
+            }
 
-        //// Change the name from Contact to Contacts
-        ////public ObservableCollection<Contact> Contacts { get; set; } = new ObservableCollection<Contact>();
-
-        //public ICommand AddCommand { get; private set; }
-        //public ObservableCollection<AppPassword.Models.Contact> Contacts { get; set; } = new ObservableCollection<AppPassword.Models.Contact>();
-
-
-        //// Ensure that this field is also internal to match the accessibility level of Contact_DAO
-        //internal Contact_DAO _ContactDAO;
-
-        //public HomePageViewModel()
-        //{
-        //    AddCommand = new Command(ExecuteAddCommand);
-        //    _ContactDAO = new Contact_DAO();
-        //    var credentials = _ContactDAO.GetAllContact();
-
-        //    foreach (var credential in credentials)
-        //    {
-        //        Contacts.Add(credential);
-        //    }
-
-        //}
-
-        //private void ExecuteAddCommand()
-        //{
-        //    // Code to execute when the AddCommand is triggered
-        //    // You can implement the addition of a new record here
-        //}
+        }
+        private void ExecuteAddCommand()
+        {
+            // Code to execute when the AddCommand is triggered
+            // You can implement the addition of a new record here
+        }
     }
 }
