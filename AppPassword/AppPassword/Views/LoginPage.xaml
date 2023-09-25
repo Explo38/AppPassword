@@ -47,25 +47,35 @@
 
         <!-- Conteneur principal -->
         <Frame Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center" 
-       CornerRadius="30" 
-       BackgroundColor="White" 
-       HasShadow="True" 
-       WidthRequest="250" HeightRequest="340">
+               CornerRadius="30" 
+               BackgroundColor="White" 
+               HasShadow="True" 
+               WidthRequest="250">
+            
+            <StackLayout Padding="20">
 
-            <StackLayout>
-                <!-- Logo de l'app à l'intérieur du Frame -->
-                <Image Source="utilisateur.png" WidthRequest="100" HeightRequest="100" HorizontalOptions="Center" />
+                    <!-- Logo de l'app à l'intérieur du Frame -->
+                    <Image Source="utilisateur.png" WidthRequest="100" HeightRequest="100" HorizontalOptions="Center" />
 
-                <!-- Utilisation d'un Frame pour le CornerRadius autour de l'Entry -->
-                <Entry WidthRequest="200" x:Name="TB_User" Text="{Binding User, Mode=TwoWay}" Placeholder="Username"/>
-                <Entry WidthRequest="200" x:Name="TB_Password" Text="{Binding Password, Mode=TwoWay}" IsPassword="True" Placeholder="Password"/>
+                    <Entry WidthRequest="200" x:Name="TB_User" Text="{Binding User, Mode=TwoWay}" Placeholder="Username"/>
+                    <Entry WidthRequest="200" x:Name="TB_Password" Text="{Binding Password, Mode=TwoWay}" IsPassword="True" Placeholder="Password"/>
 
-                <Button Command="{Binding LoginCommand}" Text="Login" Margin="0,20,0,0"/>
-                <Label x:Name="TB_Erreur" Text="{Binding Erreur, Mode=TwoWay}" TextColor="Red" HorizontalOptions="Center"/>
-            </StackLayout>
+                    <Button Command="{Binding LoginCommand}" Text="Login" Margin="0,20,0,0"/>
+                    <Label x:Name="TB_Erreur" Text="{Binding Erreur, Mode=TwoWay}" TextColor="Red" HorizontalOptions="Center"/>
+
+                    <StackLayout Orientation="Horizontal" Spacing="5">
+                        
+                    <Label Text="Vous n'avez pas de compte? " FontSize="10" />
+                    <Label Text="Créez-en un!" TextColor="Blue" TextDecorations="Underline" FontSize="15">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ShowRegisterPageCommand}" NumberOfTapsRequired="1" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                </StackLayout>
+                </StackLayout>
         </Frame>
     </Grid>
-    
 </ContentPage>
 
 

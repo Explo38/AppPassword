@@ -19,29 +19,79 @@ namespace AppPassword.Services
                 {
                     Id = 1,
                     User = "1234",
-                    Password = "1234",
+                    PasswordHash = BCrypt.Net.BCrypt.HashPassword("1234"),
                     FirstName = "John",
                     LastName = "Doe",
                     Birth = "01/01/2000",
                     Phone = "123-456-7890",
                     Email = "john.doe@example.com"
                 },
+
                 new Contact
                 {
                     Id = 2,
                     User = "SecondUser",
-                    Password = "SecondPass",
+                    PasswordHash = BCrypt.Net.BCrypt.HashPassword("1234"),
                     FirstName = "Jane",
                     LastName = "Smith",
                     Birth = "02/02/1995",
                     Phone = "098-765-4321",
                     Email = "jane.smith@example.com"
                 },
+
                 new Contact
                 {
                     Id = 3,
                     User = "ThirdUser",
-                    Password = "ThirdPass",
+                    PasswordHash = BCrypt.Net.BCrypt.HashPassword("1234"),
+                    FirstName = "Robert",
+                    LastName = "Johnson",
+                    Birth = "03/03/1985",
+                    Phone = "111-222-3333",
+                    Email = "robert.johnson@example.com"
+                },
+
+                new Contact
+                {
+                    Id = 4,
+                    User = "SecondUser",
+                    PasswordHash = BCrypt.Net.BCrypt.HashPassword("1234"),
+                    FirstName = "Jane",
+                    LastName = "Smith",
+                    Birth = "02/02/1995",
+                    Phone = "098-765-4321",
+                    Email = "jane.smith@example.com"
+                },
+
+                new Contact
+                {
+                    Id = 5,
+                    User = "ThirdUser",
+                    PasswordHash = "ThirdPass",
+                    FirstName = "Robert",
+                    LastName = "Johnson",
+                    Birth = "03/03/1985",
+                    Phone = "111-222-3333",
+                    Email = "robert.johnson@example.com"
+                },
+
+                new Contact
+                {
+                    Id = 6,
+                    User = "SecondUser",
+                    PasswordHash = "SecondPass",
+                    FirstName = "Jane",
+                    LastName = "Smith",
+                    Birth = "02/02/1995",
+                    Phone = "098-765-4321",
+                    Email = "jane.smith@example.com"
+                },
+
+                new Contact
+                {
+                    Id = 7,
+                    User = "ThirdUser",
+                    PasswordHash = "ThirdPass",
                     FirstName = "Robert",
                     LastName = "Johnson",
                     Birth = "03/03/1985",
@@ -63,7 +113,7 @@ namespace AppPassword.Services
         public string GetPassword(string user)
         {
             var contact = _ContactList.FirstOrDefault(c => c.User == user);
-            return contact != null ? contact.Password : null;
+            return contact != null ? contact.PasswordHash : null;
         }
     }
 }

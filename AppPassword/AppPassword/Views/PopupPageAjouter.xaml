@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" 
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 x:Class="AppPassword.Views.PopupPageAjouter">
+
+    <Frame BackgroundColor="White" 
+           Padding="20" 
+           WidthRequest="250"
+           VerticalOptions="End"
+           HorizontalOptions="CenterAndExpand"
+           CornerRadius="20">
+        <StackLayout>
+            <Entry Placeholder="Nom" Text="{Binding Name}" />
+            <Entry Placeholder="URL" Text="{Binding FirstName}" />
+            <Entry Placeholder="Mot de passe" Text="{Binding Email}" />
+            <Entry Placeholder="Confirmation de mot de passe" Text="{Binding Password}" IsPassword="True" />
+            <Entry Placeholder="Description" Text="{Binding ConfirmPassword}" IsPassword="True" />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Button Text="Annuler" Command="{Binding ClosePopupCommand}" HorizontalOptions="FillAndExpand" />
+                <Button Text="Enregistrer" Command="{Binding RegisterCommand}" HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+        </StackLayout>
+    </Frame>
+
+</popup:PopupPage>

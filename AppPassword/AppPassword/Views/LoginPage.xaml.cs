@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Rg.Plugins.Popup.Services;
 
 namespace AppPassword.Views
 {
@@ -16,6 +17,22 @@ namespace AppPassword.Views
         {
             InitializeComponent();
             this.BindingContext = new LoginViewModel();
+
+
+            MessagingCenter.Subscribe<LoginViewModel>(this, "ShowRegisterPopup", async (sender) =>
+            {
+                var popupPage = new PopupPageRegister();
+                await PopupNavigation.Instance.PushAsync(popupPage);
+            });
+
+            MessagingCenter.Subscribe<LoginViewModel>(this, "CloseRegisterPopup", async (sender) =>
+            {
+                await PopupNavigation.Instance.PopAsync();
+            });
+
+
         }
+
     }
+    
 }
