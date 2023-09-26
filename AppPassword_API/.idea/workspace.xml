@@ -97,7 +97,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/wamp64/www/AppPassword/public",
+    "last_opened_file_path": "C:/Users/SLAB87/Desktop/AppPassword/AppPassword_API/public",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -112,7 +112,7 @@
       <TestRunner configuration_file="$PROJECT_DIR$/phpunit.xml" scope="XML" use_alternative_configuration_file="true" />
       <method v="2" />
     </configuration>
-    <configuration name="API" type="PhpBuiltInWebServerConfigurationType" factoryName="PHP Built-in Web Server" document_root="$PROJECT_DIR$/public" port="8080">
+    <configuration name="API" type="PhpBuiltInWebServerConfigurationType" factoryName="PHP Built-in Web Server" document_root="$PROJECT_DIR$/public" host="127.0.0.1" port="8080">
       <method v="2" />
     </configuration>
     <list>
@@ -130,6 +130,7 @@
       <updated>1695626166639</updated>
       <workItem from="1695626171913" duration="4226000" />
       <workItem from="1695630477002" duration="11355000" />
+      <workItem from="1695708340435" duration="5924000" />
     </task>
     <servers />
   </component>

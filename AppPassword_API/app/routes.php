@@ -107,9 +107,8 @@ return function (App $app) {
 
     /****************** Table password_entries ********************************/
 
-    // selectionner tout les password_entries
+// sélectionner tous les password_entries
     $app->get('/getAllpassword_entries', function (Request $request, Response $response) {
-
         $db = $this->get(PDO::class);
         $sth = $db->prepare("SELECT * FROM `password_entries`");
         $sth->execute();
@@ -120,17 +119,19 @@ return function (App $app) {
             ->withHeader('Content-Type', 'application/json');
     });
 
-    // ajouter un password
+// ajouter un password
     $app->post('/passwords', function (Request $request, Response $response) {
         $data = $request->getParsedBody();
         $db = $this->get(PDO::class);
-        $sth = $db->prepare("INSERT INTO password_entries (user_id, site_web, description, mdp_hash, url_site_web) 
-                         VALUES (:user_id, :site_web, :description, :mdp_hash, :url_site_web)");
+        $sth = $db->prepare("INSERT INTO password_entries (user_id, site_web, description, password_encrypted, encryption_key, encryption_iv, url_site_web) 
+                     VALUES (:user_id, :site_web, :description, :password_encrypted, :encryption_key, :encryption_iv, :url_site_web)");
 
         $sth->bindParam(":user_id", $data['user_id']);
         $sth->bindParam(":site_web", $data['site_web']);
         $sth->bindParam(":description", $data['description']);
-        $sth->bindParam(":mdp_hash", $data['mdp_hash']);
+        $sth->bindParam(":password_encrypted", $data['password_encrypted']);  // à chiffrer avant l'insertion
+        $sth->bindParam(":encryption_key", $data['encryption_key']);          // clé de déchiffrement chiffrée
+        $sth->bindParam(":encryption_iv", $data['encryption_iv']);            // vecteur d'initialisation
         $sth->bindParam(":url_site_web", $data['url_site_web']);
 
         $sth->execute();
@@ -142,16 +143,18 @@ return function (App $app) {
             ->withHeader('Content-Type', 'application/json');
     });
 
-    // modifier password
+// modifier password
     $app->put('/passwords/{id}', function (Request $request, Response $response, array $args) {
         $id = $args['id'];
         $data = $request->getParsedBody();
         $db = $this->get(PDO::class);
-        $sth = $db->prepare("UPDATE password_entries SET site_web = :site_web, description = :description, mdp_hash = :mdp_hash, url_site_web = :url_site_web WHERE id = :id");
+        $sth = $db->prepare("UPDATE password_entries SET site_web = :site_web, description = :description, password_encrypted = :password_encrypted, encryption_key = :encryption_key, encryption_iv = :encryption_iv, url_site_web = :url_site_web WHERE id = :id");
         $sth->bindParam(":id", $id, PDO::PARAM_INT);
         $sth->bindParam(":site_web", $data['site_web']);
         $sth->bindParam(":description", $data['description']);
-        $sth->bindParam(":mdp_hash", $data['mdp_hash']);
+        $sth->bindParam(":password_encrypted", $data['password_encrypted']);
+        $sth->bindParam(":encryption_key", $data['encryption_key']);
+        $sth->bindParam(":encryption_iv", $data['encryption_iv']);
         $sth->bindParam(":url_site_web", $data['url_site_web']);
         $sth->execute();
 
@@ -162,7 +165,7 @@ return function (App $app) {
             ->withHeader('Content-Type', 'application/json');
     });
 
-    // Supprimer un password par ID
+// Supprimer un password par ID
     $app->delete('/del_password/{id}', function (Request $request, Response $response, array $args) {
         try {
             $id = $args['id'];
