@@ -4,6 +4,7 @@
              xmlns:viewModel="clr-namespace:AppPassword.ViewModels"
              xmlns:fontawesome="clr-namespace:FontAwesome"
              xmlns:model="clr-namespace:AppPassword.Models"
+             xmlns:local="clr-namespace:AppPassword.ViewModels"
              x:Class="AppPassword.Views.HomePage">
 
 
@@ -47,7 +48,6 @@
                                         <ColumnDefinition Width="auto"/>
                                     </Grid.ColumnDefinitions>
 
-
                                     <!-- Logo du site -->
                                     <Image Source="utilisateur.png" WidthRequest="30" HeightRequest="30" Aspect="AspectFit" Grid.Column="0" Grid.RowSpan="2"/>
 
@@ -61,12 +61,20 @@
                                     <Button Grid.Column="2" Grid.Row="0" Style="{StaticResource SmallButtonStyle}" Text="{x:Static fontawesome:FontAwesomeIcons.Eye}"
                                             FontFamily="{StaticResource FontAwesomeBrands}"/>
 
+                                    <!-- Boutons pour le mode de suppression -->
+                                    <StackLayout Grid.RowSpan="2" IsVisible="{Binding IsDeleteMode}" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                        <Button Text="Confirmer" Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:HomePageViewModel}}, Path=ConfirmDeleteCommand}" CommandParameter="{Binding}" />
+                                        <Button Text="Annuler" Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:HomePageViewModel}}, Path=CancelDeleteCommand}" CommandParameter="{Binding}" />
+                                    </StackLayout>
+
                                     <!-- Bouton Supprimer -->
-                                    <Button Grid.Column="2" Grid.Row="1" Style="{StaticResource SmallButtonStyle}" Text="{x:Static fontawesome:FontAwesomeIcons.Trash}"
-                                            FontFamily="{StaticResource FontAwesomeBrands}"/>
+                                    <Button Grid.Column="2" Grid.Row="1" Style="{StaticResource SmallButtonStyle}" Text="{x:Static fontawesome:FontAwesomeIcons.Trash}" 
+                                            FontFamily="{StaticResource FontAwesomeBrands}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:HomePageViewModel}}, Path=DeleteCommand}" CommandParameter="{Binding}" />
                                 </Grid>
-                                </Frame>
-                            </StackLayout>
+                            </Frame>
+
+
+                        </StackLayout>
                         </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

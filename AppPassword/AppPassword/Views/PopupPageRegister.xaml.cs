@@ -15,6 +15,7 @@ namespace AppPassword.Views
         public PopupPageRegister()
         {
             InitializeComponent();
+            BindingContext = new AppPassword.ViewModels.PopupPageRegisterViewModel();
         }
     }
 }

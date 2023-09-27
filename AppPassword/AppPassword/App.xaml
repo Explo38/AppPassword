@@ -1,44 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AppPassword.ViewModels"
              x:Class="AppPassword.App">
-    <!--
-        Define global resources and styles here, that apply to all pages in your app.
-    -->
+    <!-- Define global resources and styles here, that apply to all pages in your app. -->
     <Application.Resources>
         <ResourceDictionary>
             <OnPlatform x:TypeArguments="x:String" 
-                x:Key="FontAwesomeBrands">
+                        x:Key="FontAwesomeBrands">
                 <On Platform="Android" 
-          Value="FontAwesome5Brands.otf#Regular" />
+                    Value="FontAwesome5Brands.otf#Regular" />
                 <On Platform="iOS" 
-          Value="FontAwesome5Brands-Regular" />
+                    Value="FontAwesome5Brands-Regular" />
                 <On Platform="UWP" 
-          Value="/Assets/FontAwesome5Brands.otf#Font Awesome 5 Brands" />
+                    Value="/Assets/FontAwesome5Brands.otf#Font Awesome 5 Brands" />
             </OnPlatform>
 
             <OnPlatform x:TypeArguments="x:String" 
                 x:Key="FontAwesomeSolid">
                 <On Platform="Android" 
-          Value="FontAwesome5Solid.otf#Regular" />
+                    Value="FontAwesome5Solid.otf#Regular" />
                 <On Platform="iOS" 
-          Value="FontAwesome5Free-Solid" />
+                    Value="FontAwesome5Free-Solid" />
                 <On Platform="UWP" 
-          Value="/Assets/FontAwesome5Solid.otf#Font Awesome 5 Free" />
+                    Value="/Assets/FontAwesome5Solid.otf#Font Awesome 5 Free" />
             </OnPlatform>
 
             <OnPlatform x:TypeArguments="x:String" 
                 x:Key="FontAwesomeRegular">
                 <On Platform="Android" 
-          Value="FontAwesome5Regular.otf#Regular" />
+                    Value="FontAwesome5Regular.otf#Regular" />
                 <On Platform="iOS" 
-          Value="FontAwesome5Free-Regular" />
+                    Value="FontAwesome5Free-Regular" />
                 <On Platform="UWP" 
-          Value="/Assets/FontAwesome5Regular.otf#Font Awesome 5 Free" />
+                    Value="/Assets/FontAwesome5Regular.otf#Font Awesome 5 Free" />
             </OnPlatform>
-        </ResourceDictionary>
-        
-        <ResourceDictionary>
+
             <Color x:Key="Primary">#2196F3</Color>
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="White"></Setter>
@@ -60,32 +57,29 @@
                 </Setter>
             </Style>
 
-            <ResourceDictionary>
-                <Style x:Key="WhiteZoneStyle" TargetType="Frame">
-                    <Setter Property="CornerRadius" Value="10"/>
-                    <Setter Property="Padding" Value="8"/>
-                    <Setter Property="BackgroundColor" Value="White"/>
-                    <Style.Triggers>
-                        <DataTrigger TargetType="Frame" Binding="{Binding IsLastItem}" Value="True">
-                            <Setter Property="Margin" Value="0,10"/>
-                        </DataTrigger>
-                        <DataTrigger TargetType="Frame" Binding="{Binding IsLastItem}" Value="False">
-                            <Setter Property="Margin" Value="10,0"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-                <Style x:Key="SmallButtonStyle" TargetType="Button">
-                    <Setter Property="BackgroundColor" Value="#E0E0E0"/>
-                    <Setter Property="TextColor" Value="Black"/>
-                    <Setter Property="HeightRequest" Value="20"/>
-                    <!-- Ajusté la hauteur ici -->
-                    <Setter Property="WidthRequest" Value="30"/>
-                    <!-- Ajusté la largeur ici -->
-                    <Setter Property="CornerRadius" Value="5"/>
-                    <Setter Property="FontSize" Value="10"/>
-                    <!-- Ajusté la taille de la police ici -->
-                </Style>
-            </ResourceDictionary>
+            <Style x:Key="WhiteZoneStyle" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="Padding" Value="8"/>
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Style.Triggers>
+                    <DataTrigger TargetType="Frame" Binding="{Binding IsLastItem}" Value="True">
+                        <Setter Property="Margin" Value="0,10"/>
+                    </DataTrigger>
+                    <DataTrigger TargetType="Frame" Binding="{Binding IsLastItem}" Value="False">
+                        <Setter Property="Margin" Value="10,0"/>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="SmallButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#E0E0E0"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="HeightRequest" Value="20"/>
+                <Setter Property="WidthRequest" Value="30"/>
+                <Setter Property="CornerRadius" Value="5"/>
+                <Setter Property="FontSize" Value="10"/>
+            </Style>
+
+
 
         </ResourceDictionary>
     </Application.Resources>

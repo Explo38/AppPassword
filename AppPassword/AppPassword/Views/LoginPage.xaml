@@ -6,7 +6,8 @@
              mc:Ignorable="d"
              x:Class="AppPassword.Views.LoginPage"
              xmlns:vm="clr-namespace:AppPassword.ViewModels"
-             xmlns:magic="clr-namespace:MagicGradients;assembly=MagicGradients">
+             
+    xmlns:magic="clr-namespace:MagicGradients;assembly=MagicGradients">
 
 
 

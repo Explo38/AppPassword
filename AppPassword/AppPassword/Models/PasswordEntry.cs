@@ -7,7 +7,7 @@ using AppPassword.ViewModels;
 
 namespace AppPassword.Models
 {
-    public class Contact : INotifyPropertyChanged
+    public class PasswordEntry : INotifyPropertyChanged
     {
         private bool _isDeleteMode;
 
@@ -22,26 +22,24 @@ namespace AppPassword.Models
         }
 
         public int Id { get; set; }
-        public string First_Name { get; set; }
-        public string Last_Name { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
-        public string Password_Hash { get; set; }
-        public string User { get; set; }
-        public string Birth { get; set; }
+        public int UserId { get; set; }
+        public string SiteWeb { get; set; }
+        public string Description { get; set; }
+        public string PasswordEncrypted { get; set; }
+        public string EncryptionKey { get; set; }
+        public string EncryptionIV { get; set; }
+        public string UrlSiteWeb { get; set; }
 
-        // Implémentez l'événement PropertyChanged
+        // Frame de couverture pour la confirmation
+        public bool IsCoverVisible => _isDeleteMode;
+
+        // Implémentation de INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
 
-        // Implémentez la méthode pour déclencher l'événement
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-        // Frame de couverture pour la confirmation
-        public bool IsCoverVisible => _isDeleteMode;
     }
-
 
 }

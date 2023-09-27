@@ -54,29 +54,24 @@ namespace AppPassword.ViewModels
 
         private async void OnLoginClicked(object obj)
         {
-            // Utilisez Contact_DAO pour vérifier le nom d'utilisateur
-            bool isValidUser = _contactDAO.CheckUserExists(User);
+            var user = await _contactDAO.GetUserByEmail(User);
 
-            if (isValidUser)
+            if (user != null)
             {
-                // Récupérez le hachage du mot de passe depuis Contact_DAO
-                string hashedPassword = _contactDAO.GetPassword(User);
-
-                // Vérifiez le mot de passe avec BCrypt
-                if (BCrypt.Net.BCrypt.Verify(Password, hashedPassword))
+                if (BCrypt.Net.BCrypt.Verify(Password, user.Password_Hash))
                 {
                     await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
                 }
                 else
                 {
                     Erreur = "Mot de passe incorrect";
-                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(Erreur)));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Erreur)));
                 }
             }
             else
             {
                 Erreur = "Utilisateur introuvable";
-                PropertyChanged(this, new PropertyChangedEventArgs(nameof(Erreur)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Erreur)));
             }
         }
 

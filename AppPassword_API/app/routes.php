@@ -81,7 +81,7 @@ return function (App $app) {
 
 
     // modifier users
-    $app->put('/users/{id}', function (Request $request, Response $response, array $args) {
+    $app->put('/Edit_users/{id}', function (Request $request, Response $response, array $args) {
         $id = $args['id'];
         $data = $request->getParsedBody();
         $db = $this->get(PDO::class);
@@ -101,8 +101,6 @@ return function (App $app) {
             ->withStatus(200)
             ->withHeader('Content-Type', 'application/json');
     });
-
-
 
 
     /****************** Table password_entries ********************************/
@@ -144,7 +142,7 @@ return function (App $app) {
     });
 
 // modifier password
-    $app->put('/passwords/{id}', function (Request $request, Response $response, array $args) {
+    $app->put('/Edit_passwords/{id}', function (Request $request, Response $response, array $args) {
         $id = $args['id'];
         $data = $request->getParsedBody();
         $db = $this->get(PDO::class);
