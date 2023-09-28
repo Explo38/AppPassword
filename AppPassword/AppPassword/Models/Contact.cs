@@ -22,13 +22,13 @@ namespace AppPassword.Models
         }
 
         public int Id { get; set; }
-        public string First_Name { get; set; }
-        public string Last_Name { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
-        public string Password_Hash { get; set; }
+        public string first_name { get; set; }
+        public string last_name { get; set; }
+        public string phone { get; set; }
+        public string email { get; set; }
+        public string password_hash { get; set; }
         public string User { get; set; }
-        public string Birth { get; set; }
+        public string birth { get; set; }
 
         // Implémentez l'événement PropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;

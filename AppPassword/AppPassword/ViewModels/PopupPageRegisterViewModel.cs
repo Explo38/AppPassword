@@ -1,6 +1,7 @@
 ﻿using AppPassword.Models; 
 using AppPassword.Services;
 using BCrypt.Net;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Threading.Tasks; 
 using System.Windows.Input;
@@ -25,14 +26,14 @@ namespace AppPassword.ViewModels
         public PopupPageRegisterViewModel()
         {
             _contactDAO = new Contact_DAO(); // Instanciation de Contact_DAO
-            ClosePopupCommand = new Command(ClosePopup);
+            ClosePopupCommand = new Command( async () => await ClosePopup());
             RegisterCommand = new Command( async () => await ExecuteRegister());
         }
 
-        private void ClosePopup()
+        private async Task ClosePopup()
         {
             // Code pour fermer la popup
-            // Par exemple : await PopupNavigation.Instance.PopAsync();
+            await PopupNavigation.Instance.PopAsync();
         }
 
         private async Task ExecuteRegister()
@@ -59,10 +60,10 @@ namespace AppPassword.ViewModels
 
             Contact newUser = new Contact
             {
-                First_Name = FirstName,
-                Last_Name = Name, // J'ai supposé que "Name" est le nom de famille ici
-                Email = Email,
-                Password_Hash = hashedPassword
+                first_name = FirstName,
+                last_name = Name, // J'ai supposé que "Name" est le nom de famille ici
+                email = Email,
+                password_hash = hashedPassword
                 // Remplissez les autres propriétés si nécessaire...
             };
 
@@ -76,3 +77,4 @@ namespace AppPassword.ViewModels
         }
     }
 }
+

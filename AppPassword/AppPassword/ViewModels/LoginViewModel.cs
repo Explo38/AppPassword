@@ -58,7 +58,7 @@ namespace AppPassword.ViewModels
 
             if (user != null)
             {
-                if (BCrypt.Net.BCrypt.Verify(Password, user.Password_Hash))
+                if (BCrypt.Net.BCrypt.Verify(Password, user.password_hash))
                 {
                     await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
                 }

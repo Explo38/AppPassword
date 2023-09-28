@@ -25,7 +25,7 @@ namespace AppPassword.Services
         public async Task<Contact> GetUserByEmail(string email)
         {
             var users = await GetAllUser();
-            return users.FirstOrDefault(u => u.Email == email);
+            return users.FirstOrDefault(u => u.email == email);
         }
 
         // recuperer tout les users
@@ -41,7 +41,15 @@ namespace AppPassword.Services
         {
             var jsonData = JsonSerializer.Serialize(user);
             var content = new StringContent(jsonData, System.Text.Encoding.UTF8, "application/json");
-            await _httpClient.PostAsync($"{API}/users", content);
+            try
+            {
+                await _httpClient.PostAsync($"{API}/users", content);
+            }
+            catch(Exception exception)
+            {
+                var t = exception.Message;
+            }
+            
         }
 
 

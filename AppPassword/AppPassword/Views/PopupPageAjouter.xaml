@@ -11,11 +11,11 @@
            HorizontalOptions="CenterAndExpand"
            CornerRadius="20">
         <StackLayout>
-            <Entry Placeholder="Nom" Text="{Binding Name}" />
-            <Entry Placeholder="URL" Text="{Binding FirstName}" />
-            <Entry Placeholder="Mot de passe" Text="{Binding Email}" />
-            <Entry Placeholder="Confirmation de mot de passe" Text="{Binding Password}" IsPassword="True" />
-            <Entry Placeholder="Description" Text="{Binding ConfirmPassword}" IsPassword="True" />
+            <Entry Placeholder="Nom" Text="{Binding site_web}" />
+            <Entry Placeholder="URL" Text="{Binding url_site_web}" />
+            <Entry Placeholder="Description" Text="{Binding description}" />
+            <Entry Placeholder="mot de passe" Text="{Binding PasswordEncrypted}" IsPassword="True" />
+            <Entry Placeholder="Confirmation de mot de passe" Text="{Binding PasswordEncrypted}" IsPassword="True" />
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                 <Button Text="Annuler" Command="{Binding ClosePopupCommand}" HorizontalOptions="FillAndExpand" />
                 <Button Text="Enregistrer" Command="{Binding RegisterCommand}" HorizontalOptions="FillAndExpand" />

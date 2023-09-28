@@ -38,6 +38,21 @@ namespace AppPassword.ViewModels
             DeleteCommand = new Command<PasswordEntry>(ExecuteDeleteCommand);
             ConfirmDeleteCommand = new Command<PasswordEntry>(ExecuteConfirmDeleteCommand);
             CancelDeleteCommand = new Command<PasswordEntry>(ExecuteCancelDeleteCommand);
+            LoadPasswordEntries();
+
+
+            MessagingCenter.Subscribe<PopupPageAjouterViewModel, PasswordEntry>(
+                this, "Nouveau Site ajouter", (sender, newPasswordEntry) =>
+                {
+                    // Ajoutez la nouvelle entrée de mot de passe à l'ObservableCollection
+                    if (PasswordEntries == null)
+                        PasswordEntries = new ObservableCollection<PasswordEntry>();
+
+                    PasswordEntries.Add(newPasswordEntry);
+                });
+
+            MessagingCenter.Unsubscribe<PopupPageAjouterViewModel, PasswordEntry>(this, "NewPasswordEntryAdded");
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -45,6 +60,11 @@ namespace AppPassword.ViewModels
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private async void LoadPasswordEntries()
+        {
+            PasswordEntries = new ObservableCollection<PasswordEntry>(await _PasswordDAO.GetAllPasswordEntries());
         }
 
         private async void ExecuteAjoutCommand()

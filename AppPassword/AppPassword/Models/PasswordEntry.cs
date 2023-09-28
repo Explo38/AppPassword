@@ -23,12 +23,12 @@ namespace AppPassword.Models
 
         public int Id { get; set; }
         public int UserId { get; set; }
-        public string SiteWeb { get; set; }
-        public string Description { get; set; }
+        public string site_web { get; set; }
+        public string description { get; set; }
         public string PasswordEncrypted { get; set; }
         public string EncryptionKey { get; set; }
         public string EncryptionIV { get; set; }
-        public string UrlSiteWeb { get; set; }
+        public string url_site_web { get; set; }
 
         // Frame de couverture pour la confirmation
         public bool IsCoverVisible => _isDeleteMode;
