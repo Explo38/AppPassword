@@ -2,7 +2,12 @@
 <popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" 
                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                  xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 xmlns:viewmodels="clr-namespace:AppPassword.ViewModels"
                  x:Class="AppPassword.Views.PopupPageAjouter">
+
+    <ContentPage.BindingContext>
+        <viewmodels:PopupPageAjouterViewModel/>
+    </ContentPage.BindingContext>
 
     <Frame BackgroundColor="White" 
            Padding="20" 

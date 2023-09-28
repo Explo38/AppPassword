@@ -18,15 +18,14 @@ namespace AppPassword.ViewModels
         public string ConfirmPassword { get; set; }   // pour le champ "Confirmation de mot de passe"
         public string Description { get; set; }       // pour le champ "Description"
         public string Erreur { get; set; }
-
         public ICommand ClosePopupCommand { get; set; }
-        public ICommand AddPasswordEntryCommand { get; set; }
+        public ICommand RegisterCommand { get; set; }
 
         public PopupPageAjouterViewModel()
         {
             _passwordDAO = new Password_DAO();
             ClosePopupCommand = new Command(async () => await ClosePopup());
-            AddPasswordEntryCommand = new Command(async () => await ExecuteAddPasswordEntry());
+            RegisterCommand = new Command(async () => await ExecuteAddPasswordEntry());
         }
 
         private async Task ClosePopup()
