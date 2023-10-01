@@ -26,10 +26,10 @@ return function (ContainerBuilder $containerBuilder) {
 
                 "db" => [
                     'driver' => 'mysql',
-                    'host' => 'localhost',
-                    'username' => 'root',
-                    'database' => 'apppasswordbdd',
-                    'password' => '',
+                    'host' => 'mysql-cyrianb.alwaysdata.net',
+                    'username' => 'cyrianb',
+                    'database' => 'cyrianb_password',
+                    'password' => 'chouxvert',
                     'charset' => 'utf8mb4',
                     'collation' => 'utf8mb4_unicode_ci',
                     'flags' => [

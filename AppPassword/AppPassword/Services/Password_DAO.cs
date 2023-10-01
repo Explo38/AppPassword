@@ -11,7 +11,7 @@ namespace AppPassword.Services
     class Password_DAO
     {
         private readonly HttpClient _httpClient;
-        private const string ApiBaseUrl = "http://10.0.2.2:8080";
+        private const string ApiBaseUrl = "http://cyrianb.alwaysdata.net";
 
         public Password_DAO()
         {

@@ -33,7 +33,6 @@ namespace AppPassword.ViewModels
         public HomePageViewModel()
         {
             AjoutCommand = new Command(ExecuteAjoutCommand);
-            AddCommand = new Command(ExecuteAddCommand);
             _PasswordDAO = new Password_DAO();
             DeleteCommand = new Command<PasswordEntry>(ExecuteDeleteCommand);
             ConfirmDeleteCommand = new Command<PasswordEntry>(ExecuteConfirmDeleteCommand);
@@ -73,10 +72,7 @@ namespace AppPassword.ViewModels
             await PopupNavigation.Instance.PushAsync(popup);
         }
 
-        private void ExecuteAddCommand()
-        {
-            // Code pour ajouter une nouvelle entrée de mot de passe
-        }
+     
 
         private void ExecuteDeleteCommand(PasswordEntry passwordEntry)
         {

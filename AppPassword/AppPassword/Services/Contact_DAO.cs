@@ -13,7 +13,7 @@ namespace AppPassword.Services
     public class Contact_DAO
     {
         private readonly HttpClient _httpClient;
-        private const string API = "http://10.0.2.2:8080";
+        private const string API = "http://cyrianb.alwaysdata.net";
 
        
         public Contact_DAO()
