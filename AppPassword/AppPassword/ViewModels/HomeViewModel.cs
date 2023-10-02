@@ -22,6 +22,7 @@ namespace AppPassword.ViewModels
 {
     public class HomePageViewModel : INotifyPropertyChanged
     {
+        // Commandes exposées pour être utilisées par la vue.
         public ICommand AddCommand { get; private set; }
         public ObservableCollection<PasswordEntry> PasswordEntries { get; set; }
         private Password_DAO _PasswordDAO;
@@ -32,26 +33,30 @@ namespace AppPassword.ViewModels
 
         public HomePageViewModel()
         {
+            // Initialisation des commandes.
             AjoutCommand = new Command(ExecuteAjoutCommand);
+            AddCommand = new Command(ExecuteAddCommand);
             _PasswordDAO = new Password_DAO();
             DeleteCommand = new Command<PasswordEntry>(ExecuteDeleteCommand);
             ConfirmDeleteCommand = new Command<PasswordEntry>(ExecuteConfirmDeleteCommand);
             CancelDeleteCommand = new Command<PasswordEntry>(ExecuteCancelDeleteCommand);
+
+            // Charge les entrées de mot de passe existantes.
             LoadPasswordEntries();
 
-
+            // Abonnement au centre de messagerie pour écouter les ajouts d'entrée de mot de passe.
             MessagingCenter.Subscribe<PopupPageAjouterViewModel, PasswordEntry>(
                 this, "Nouveau Site ajouter", (sender, newPasswordEntry) =>
                 {
-                    // Ajoutez la nouvelle entrée de mot de passe à l'ObservableCollection
+                    // Ajoute la nouvelle entrée de mot de passe à l'ObservableCollection.
                     if (PasswordEntries == null)
                         PasswordEntries = new ObservableCollection<PasswordEntry>();
 
                     PasswordEntries.Add(newPasswordEntry);
                 });
 
+            // Se désabonne de l'événement pour éviter les fuites de mémoire.
             MessagingCenter.Unsubscribe<PopupPageAjouterViewModel, PasswordEntry>(this, "NewPasswordEntryAdded");
-
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -61,35 +66,45 @@ namespace AppPassword.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        // Charge toutes les entrées de mot de passe.
         private async void LoadPasswordEntries()
         {
             PasswordEntries = new ObservableCollection<PasswordEntry>(await _PasswordDAO.GetAllPasswordEntries());
         }
 
+        // Ouvre la popup pour ajouter une nouvelle entrée.
         private async void ExecuteAjoutCommand()
         {
             var popup = new PopupPageAjouter();
             await PopupNavigation.Instance.PushAsync(popup);
         }
 
-     
+        // Ajoute une nouvelle entrée de mot de passe.
+        private void ExecuteAddCommand()
+        {
+            
+        }
 
+        // Active le mode de suppression pour une entrée spécifique.
         private void ExecuteDeleteCommand(PasswordEntry passwordEntry)
         {
             passwordEntry.IsDeleteMode = true;
         }
 
+        // Supprime l'entrée de mot de passe confirmée.
         private void ExecuteConfirmDeleteCommand(PasswordEntry passwordEntry)
         {
             PasswordEntries.Remove(passwordEntry);
-            // Code pour supprimer de la base de données si nécessaire
+           
         }
 
+        // Annule le mode de suppression pour une entrée spécifique.
         private void ExecuteCancelDeleteCommand(PasswordEntry passwordEntry)
         {
             passwordEntry.IsDeleteMode = false;
         }
 
+        // Convertisseur pour inverser une valeur booléenne.
         public class InverseBoolConverter : IValueConverter
         {
             public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

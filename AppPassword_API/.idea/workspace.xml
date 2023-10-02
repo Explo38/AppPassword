@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5920de68-9465-4c9a-849a-8ae9dead974c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../AppPassword/AppPassword/Services/Contact_DAO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../AppPassword/AppPassword/Services/Contact_DAO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AppPassword/AppPassword/ViewModels/HomeViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../AppPassword/AppPassword/ViewModels/HomeViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AppPassword/AppPassword/ViewModels/LoginViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../AppPassword/AppPassword/ViewModels/LoginViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AppPassword/AppPassword/ViewModels/PopupPageAjouterViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../AppPassword/AppPassword/ViewModels/PopupPageAjouterViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,6 +145,7 @@
       <workItem from="1695802352719" duration="5815000" />
       <workItem from="1695888594584" duration="2529000" />
       <workItem from="1695896648481" duration="623000" />
+      <workItem from="1696228047214" duration="3074000" />
     </task>
     <servers />
   </component>

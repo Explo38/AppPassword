@@ -55,9 +55,9 @@ namespace AppPassword.ViewModels
             {
                 site_web = Name,
                 url_site_web = URL ?? string.Empty,           // Si URL est null, assignez une chaîne vide
-                PasswordEncrypted = Password,               // Ici, je suppose que vous allez chiffrer le mot de passe plus tard.
+                PasswordEncrypted = Password,              
                 description = Description ?? string.Empty  // Si Description est null, assignez une chaîne vide
-                // Remplissez les autres propriétés si nécessaire...
+             
             };
 
             await _passwordDAO.AddPasswordEntry(newPasswordEntry);
